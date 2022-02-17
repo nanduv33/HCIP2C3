@@ -35,6 +35,15 @@
 		    margin-right: auto;
 		    display: block;
 		}
+    .rectangle {
+      position: absolute;
+      width: 300px;
+      height: 150px;
+      top: 300px;
+      left: 330px;
+      border-raidus: 4px;
+      border: solid;
+    }
 	</style>
 
 	<script type="text/javascript" canvas="canvas">
@@ -111,6 +120,23 @@
 
 				});
 			}
+      
+      let gradientRect = document.getElementById("gradient");
+
+    // Create gradient
+      gradientRect.addEventListener("mousedown", function(e)
+      {
+          var context = gradientRect.getContext("2d");
+          var newGradient = context.createLinearGradient(0, 0, 200, 0);
+          if (cp.history.length >=2) {
+            newGradient.addColorStop(0, cp.history[cp.history.length - 1]);
+            newGradient.addColorStop(1, cp.history[cp.history.length - 2]);
+
+      // Fill with gradient
+            context.fillStyle = newGradient;
+            context.fillRect(0, 0, 300, 150);
+          }
+      });
 
 			// Set up the mandala interactivity.
       
@@ -123,5 +149,6 @@
 
 	<canvas id="myCanvas" width="750px" height="750px"></canvas>
 	<div id="color-palette"></div>
+  <canvas id="gradient" class="rectangle" ></canvas>
 </body>
 </html>

@@ -9,7 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'eventhandling/vendors/bootstrap/css/bootstrap.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'eventhandling/css/main.css' %}" />
 
-	<script src="{% static 'eventhandling/vendors/jquery/jquery-3.3.1.min.js' %}"></script>
+	<!-- <script src="{% static 'eventhandling/vendors/jquery/jquery-3.3.1.min.js' %}"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
 
@@ -60,10 +61,34 @@
 			
 	</div>
 
-
 <script type="text/javascript">
-
-	// your solution here
+  $('.p2-circle.bg-purple').click(function() {
+    console.log("got here")
+    $('.p2-circle.bg-purple').hide();
+  });
+  $('.p2-circle.bg-green').click(function() {
+    $('.p2-circle.bg-green').hide();
+  });
+  $('.p2-circle.bg-yellow').click(function() {
+    $('.p2-circle.bg-yellow').hide();
+  });
+  $('.p2-circle.bg-orange').click(function() {
+    $('.p2-circle.bg-orange').hide();
+  });
+  $('.p2-circle.bg-blue').click(function() {
+    $('.p2-circle.bg-blue').hide();
+  });
+  $('#gradient-circle').mouseenter(function() {
+    $('#gradient-circle').hide();
+  });
+  $('.btn.btn-light.float-right').click(function() {
+    $('.p2-circle.bg-blue').show();
+    $('.p2-circle.bg-orange').show();
+    $('.p2-circle.bg-purple').show();
+    $('.p2-circle.bg-yellow').show();
+    $('.p2-circle.bg-green').show();
+    $('#gradient-circle').show();
+  });
 
 </script>
 </body>
