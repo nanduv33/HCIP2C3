@@ -83,106 +83,55 @@
 		</div>
 	</div>
 	<script>
-    var myElement = document.getElementById('tap-box');
-    var mc = new Hammer(myElement);
-
-    // listen to events...
-    mc.on("tap", function(ev) {
-        myElement.textContent = ev.type +" gesture detected.";
-        myElement.style.backgroundColor = 'black'
+    // each gesture box turns into a different color when the gesture is recognized
+    var box = document.getElementById('tap-box');
+    var ham = new Hammer(box);
+    ham.on("tap", function(ev) {
+        box.textContent = ev.type +" gesture detected.";
+        box.style.backgroundColor = 'black'
     });
 
-    var myElement1 = document.getElementById('pan-box');
-    var mc1 = new Hammer(myElement1);
-    // mc1.get('pan').set({ direction: Hammer.DIRECTION_ALL, threshold: 0 });
-    mc1.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
-    // mc1.on("panleft panright panup pandown", handleDrag);
-    // var lastPosX = 0;
-    // var lastPosY = 0;
-    // var isDragging = false;
-    // function handleDrag(ev) {
-      
-    //   var elem = ev.target;
-    //   myElement1.textContent = ev.type +" gesture detected.";
-    //   if (!isDragging) {
-    //     isDragging = true;
-    //     lastPosX = elem.offsetLeft;
-    //     lastPosY = elem.offsetTop;
-        
-    //   }
-    //   var posX = ev.deltaX + lastPosX;
-    //   var posY = ev.deltaY + lastPosY;
-      
-    //   // move our element to that position
-    //   elem.style.left = posX + "px";
-    //   elem.style.top = posY + "px";
-      
-    //   // DRAG ENDED
-    //   // this is where we simply forget we are dragging
-    //   if (ev.isFinal) {
-    //     isDragging = false;
-    //   }
-    // }
-    mc1.on("panleft panright panup pandown", function(ev) {
-        myElement1.textContent = ev.type +" gesture";
-        myElement1.style.backgroundColor = 'blue'
-    });
-
-    var myElement2 = document.getElementById('press-box');
-    var mc2 = new Hammer(myElement2);
-    mc2.on("press", function(ev) {
-        myElement2.style.backgroundColor = 'white'
-    });
-
-    var myElement3 = document.getElementById('rotate-box');
-    var mc3 = new Hammer.Manager(myElement3);
-    var rotate = new Hammer.Rotate();
-    // pinch.recognizeWith(rotate);
-    mc3.add([rotate]);
-    mc3.on("rotate", function(ev) {
-        myElement3.textContent += "Rotating!";
-        myElement3.style.backgroundColor = '#F00505'
-    });
-
-    var myElement4 = document.getElementById('pinch-box');
-    var mc4 = new Hammer.Manager(myElement4);
-    var pinch = new Hammer.Pinch();
-    // pinch.recognizeWith(rotate);
-    mc4.add([pinch]);
-    mc4.on("pinch", function(ev) {
-        myElement4.textContent += "Pinching";
-        myElement4.style.backgroundColor = '#F005D4'
-    });
-
-  var myElement5 = document.getElementById('swipe-box');
-    var mc5 = new Hammer.Manager(myElement5);
-    var swipe = new Hammer.Swipe();
-    // pinch.recognizeWith(rotate);
-    mc5.add([swipe]);
-    mc5.on("swipe", function(ev) {
-        myElement5.textContent += "Swiping";
-        myElement5.style.backgroundColor = '#05F0D7'
-    });
-//   var Swipe = new Hammer.Swipe();
-
-// // Add the recognizer to the manager
-// manager.add(Swipe);
-
-// // Declare global variables to swiped correct distance
-// var deltaX = 0;
-// var deltaY = 0;
-
-// // Subscribe to a desired event
-// manager.on('swipe', function(e) {
-//   deltaX = deltaX + e.deltaX;
-//   var direction = e.offsetDirection;
-//   var translate3d = 'translate3d(' + deltaX + 'px, 0, 0)';
+    var box1 = document.getElementById('pan-box');
+    var ham1 = new Hammer(box1);
+    ham1.add( new Hammer.Pan({ direction: Hammer.DIRECTION_ALL, threshold: 0 }) );
   
-//   if (direction === 4 || direction === 2) {
-//     e.target.innerText = deltaX;
-//     e.target.style.transform = translate3d;
-//   }
-// });
+    ham1.on("panleft panright panup pandown", function(ev) {
+        box1.textContent = ev.type +" gesture";
+        box1.style.backgroundColor = 'blue'
+    });
+
+    var box2 = document.getElementById('press-box');
+    var ham2 = new Hammer(box2);
+    ham2.on("press", function(ev) {
+        box2.style.backgroundColor = 'white'
+    });
+
+    var box3 = document.getElementById('rotate-box');
+    var ham3 = new Hammer.Manager(box3);
+    var rotate = new Hammer.Rotate();
+    ham3.add(rotate);
+    ham3.on("rotate", function(ev) {
+        box3.textContent += "Rotating!";
+        box3.style.backgroundColor = '#F00505'
+    });
+
+    var box4 = document.getElementById('pinch-box');
+    var ham4 = new Hammer.Manager(box4);
+    var pinch = new Hammer.Pinch();
+    ham4.add(pinch);
+    ham4.on("pinch", function(ev) {
+        box4.textContent += "Pinching";
+        box4.style.backgroundColor = '#F005D4'
+    });
+
+  var box5 = document.getElementById('swipe-box');
+    var ham5 = new Hammer.Manager(box5);
+    var swipe = new Hammer.Swipe();
+    ham5.add(swipe);
+    ham5.on("swipe", function(ev) {
+        box5.textContent += "Swiping";
+        box5.style.backgroundColor = '#05F0D7'
+    });
   </script>
 </body>
 </html>

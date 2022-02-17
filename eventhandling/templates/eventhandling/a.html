@@ -62,30 +62,30 @@
 	</div>
 
 <script type="text/javascript">
+  // hide all purple circles
   $('.p2-circle.bg-purple').click(function() {
-    console.log("got here")
     $('.p2-circle.bg-purple').hide();
   });
+  // hide all blue and green circles
   $('.p2-circle.bg-green').click(function() {
     $('.p2-circle.bg-green').hide();
-  });
-  $('.p2-circle.bg-yellow').click(function() {
-    $('.p2-circle.bg-yellow').hide();
-  });
-  $('.p2-circle.bg-orange').click(function() {
-    $('.p2-circle.bg-orange').hide();
-  });
-  $('.p2-circle.bg-blue').click(function() {
     $('.p2-circle.bg-blue').hide();
   });
+  // hide other orange bordered circle
+  $('.p2-circle.bg-orange.p2-border').click(function() {
+    $('.p2-circle.bg-orange.p2-border').not(this).each(function(){
+      $(this).hide();
+    });
+  });
+  // hide gradient circle
   $('#gradient-circle').mouseenter(function() {
     $('#gradient-circle').hide();
   });
+  // show all hidden circles again
   $('.btn.btn-light.float-right').click(function() {
     $('.p2-circle.bg-blue').show();
     $('.p2-circle.bg-orange').show();
     $('.p2-circle.bg-purple').show();
-    $('.p2-circle.bg-yellow').show();
     $('.p2-circle.bg-green').show();
     $('#gradient-circle').show();
   });

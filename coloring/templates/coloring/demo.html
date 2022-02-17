@@ -39,8 +39,8 @@
       position: absolute;
       width: 300px;
       height: 150px;
-      top: 300px;
-      left: 330px;
+      top: 40vh;
+      left: 40vw;
       border-raidus: 4px;
       border: solid;
     }
@@ -72,7 +72,7 @@
 				    if (hit) {
 				    		// Color pallette keeps track of the full history of colors, though we
 				    		// only color in with the most-recent color.
-				        hit.item.fillColor = cp.history[cp.history.length - 1];
+                hit.item.fillColor = cp.history[cp.history.length - 1];
 				    }
 				}
 			}
@@ -120,19 +120,24 @@
 
 				});
 			}
-      
+      // rectangle that will be filled with gradient color
       let gradientRect = document.getElementById("gradient");
 
-    // Create gradient
-      gradientRect.addEventListener("mousedown", function(e)
+      // create and add gradient to rectangle
+      gradientRect.addEventListener("mouseup", function(e)
       {
+          let rect = gradientRect.getBoundingClientRect();
+          let x = e.clientX - rect.left;
+          let y = e.clientY - rect.top;
+          console.log("Coordinate x: " + x, 
+                      "Coordinate y: " + y);
           var context = gradientRect.getContext("2d");
-          var newGradient = context.createLinearGradient(0, 0, 200, 0);
+          var newGradient = context.createLinearGradient(x, y, 0, 0);
           if (cp.history.length >=2) {
             newGradient.addColorStop(0, cp.history[cp.history.length - 1]);
             newGradient.addColorStop(1, cp.history[cp.history.length - 2]);
 
-      // Fill with gradient
+            // Fill with gradient
             context.fillStyle = newGradient;
             context.fillRect(0, 0, 300, 150);
           }

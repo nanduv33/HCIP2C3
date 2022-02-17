@@ -20,7 +20,8 @@
 				<h3>Event Handling - Task B</h3>
 			</div>
 			<div class="col-6">
-				<button class="btn btn-light float-right">
+				<button class="btn btn-light float-right"
+          onclick="stopBubbles()">
 					Stop
 				</button>
 			</div>
@@ -38,11 +39,19 @@
 
 
 <script type="text/javascript">
-
-	$('html').on('keydown', function (e)) {
-    var $bubble;
-    
+  var stop = false;
+  // called when button is clicked
+  function stopBubbles() {
+    stop = true;
   }
+  // every one second a blue circle is added
+	async function makeBubbles() {
+    while (!stop) {
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      $('.shape-container').append('<div class="p2-circle bg-blue"></div>');
+    }
+  }
+  makeBubbles();
 
 </script>
 </body>
